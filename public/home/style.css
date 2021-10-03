@@ -1,0 +1,57 @@
+body {
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+
+    margin-bottom: 75px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    width: 1000px;
+    height: 355px;
+    border: 4px solid lightblue;
+}
+
+.node {
+    width: calc(1000px / 50);
+    height: calc(300px / 15);
+    outline: 2px solid lightblue;
+
+    display: inline-block;
+}
+
+.searched-node {
+    background-color: lightblue;
+    display: inline-block;
+}
+
+.shortest-path-node {
+    background-color: yellow;
+    outline-color: yellow;
+    display: inline-block;
+}
+
+.start-node {
+    background-color: red;
+    display: inline-block;
+}
+
+.end-node {
+    background-color: green;
+    outline-color: lightblue;
+    display: inline-block;
+}
+
+.wall-node {
+    background-color: black;
+    outline-color: black;
+    display: inline-block;
+}
