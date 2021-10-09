@@ -1,5 +1,5 @@
-import { dijkstra } from "../algorithms/dijkstra.js";
-import { findNodeIndex } from "../algorithms/dijkstra.js";
+import { dijkstra, findNodeIndex } from "../algorithms/dijkstra.js";
+import { aStar } from "../algorithms/aStar.js";
 
 export const NUMBER_OF_ROWS = 15;
 export const NUMBER_OF_COLS = 50;
@@ -86,7 +86,7 @@ function setStartNode() {
     return findNodeCoords(Array.from(nodes).findIndex(node => node.classList.contains("start-node")));
 }
 
-function findNodeCoords(nodeId) {
+export function findNodeCoords(nodeId) {
     const row = Math.floor(nodeId / NUMBER_OF_COLS);
     const column = nodeId - row * NUMBER_OF_COLS;
     return { row, column }
@@ -96,38 +96,14 @@ function setEndNode() {
     return findNodeCoords(Array.from(nodes).findIndex(node => node.classList.contains("end-node")));
 }
 
-const startButton = document.querySelector(".button-start");
-startButton.addEventListener("click", () => {
-    if (isSolving) {
-        return;
-    }
-    canIDraw = false;
-    isSolving = true;
-    const backGrid = createGrid();
-    const animatedPath = dijkstra(setStartNode(), setEndNode(), backGrid);
-    let i = 0;
-    const intervalId1 = setInterval(() => {
-        nodes[findNodeIndex(animatedPath[i])].classList.add("searched-node");
-        i++;
-        if (i === animatedPath.length - 1) {
-            let previousNode = animatedPath[i];
-            let nodeToPaint = nodes[findNodeIndex(previousNode)];
-            if (previousNode.distance === Infinity) {
-                window.alert("There is no valid path!")
-            } else {
-                const intervalId2 = setInterval(() => {
-                    nodeToPaint.classList.add("shortest-path-node");
-                    previousNode = previousNode.previousNode;
-                    nodeToPaint = nodes[findNodeIndex(previousNode)];
-                    if (previousNode.previousNode === null) {
-                        isSolving = false;
-                        clearInterval(intervalId1);
-                        clearInterval(intervalId2);
-                    }
-                }, 30);
-            }
-        }
-    }, 10);
+const startButtonDijkstra = document.querySelector(".button-start-dijkstra");
+startButtonDijkstra.addEventListener("click", () => {
+    runPathFindingAlgorithm("dijkstra");
+});
+
+const startButtonAStar = document.querySelector(".button-start-aStar");
+startButtonAStar.addEventListener("click", () => {
+    runPathFindingAlgorithm("a*");
 });
 
 function createGrid() {
@@ -166,6 +142,46 @@ function createNode(nodeRow, nodeColumn) {
 
 function findIndexFromCoords(row, column) {
     return row * NUMBER_OF_COLS + column
+}
+
+function runPathFindingAlgorithm(algorithm) {
+    if (isSolving) {
+        return;
+    }
+    canIDraw = false;
+    isSolving = true;
+    const backGrid = createGrid();
+    let animatedPath = [];
+    if (algorithm === "dijkstra") {
+        animatedPath = dijkstra(setStartNode(), setEndNode(), backGrid);
+    } else if (algorithm === "a*") {
+        animatedPath = aStar(setStartNode(), setEndNode(), backGrid);
+    }
+
+    let i = 0;
+    const intervalId1 = setInterval(() => {
+        nodes[findNodeIndex(animatedPath[i])].classList.add("searched-node");
+        i++;
+        if (i === animatedPath.length - 1) {
+            clearInterval(intervalId1);
+            let previousNode = animatedPath[i];
+            let nodeToPaint = nodes[findNodeIndex(previousNode)];
+            if (previousNode.distance === Infinity) {
+                isSolving = false;
+                window.alert("There is no valid path!")
+            } else {
+                const intervalId2 = setInterval(() => {
+                    nodeToPaint.classList.add("shortest-path-node");
+                    previousNode = previousNode.previousNode;
+                    nodeToPaint = nodes[findNodeIndex(previousNode)];
+                    if (previousNode.previousNode === null) {
+                        isSolving = false;
+                        clearInterval(intervalId2);
+                    }
+                }, 30);
+            }
+        }
+    }, 10);
 }
 
 const resetGrid = document.querySelector(".button-reset-grid");
