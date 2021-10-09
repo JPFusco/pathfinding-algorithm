@@ -1,5 +1,4 @@
-const NUMBER_OF_ROWS = 15;
-const NUMBER_OF_COLS = 50;
+import { NUMBER_OF_COLS, NUMBER_OF_ROWS } from "../home/script.js";
 
 export function findNodeIndex(node) {
     return node.row * NUMBER_OF_COLS + node.column
@@ -32,7 +31,7 @@ export function dijkstra(startNode, endNode, backGrid) {
 }
 
 function updateNodesByDistance(grid) {
-    const sortedGrid = grid; //Maybe learn quick sort and apply it here later
+    const sortedGrid = grid;
     return sortedGrid.sort((a, b) => a.distance - b.distance);
 }
 

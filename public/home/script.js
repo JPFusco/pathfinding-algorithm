@@ -1,8 +1,8 @@
-import { dijkstra } from "./dijkstra.js";
-import { findNodeIndex } from "./dijkstra.js";
+import { dijkstra } from "../algorithms/dijkstra.js";
+import { findNodeIndex } from "../algorithms/dijkstra.js";
 
-const NUMBER_OF_ROWS = 15;
-const NUMBER_OF_COLS = 50;
+export const NUMBER_OF_ROWS = 15;
+export const NUMBER_OF_COLS = 50;
 
 const grid = document.querySelector(".grid");
 let nodes = [];
@@ -62,7 +62,9 @@ window.addEventListener("mouseup", () => {
 })
 
 function turnNodeIntoWall(event) {
-    if (event.target.classList.contains("start-node") || event.target.classList.contains("end-node")) return;
+    if (event.target.classList.contains("start-node") || event.target.classList.contains("end-node")) {
+        return;
+    }
     event.target.classList.toggle("wall-node");
 }
 
@@ -117,11 +119,13 @@ startButton.addEventListener("click", () => {
                     nodeToPaint.classList.add("shortest-path-node");
                     previousNode = previousNode.previousNode;
                     nodeToPaint = nodes[findNodeIndex(previousNode)];
-                    if (previousNode.previousNode === null) clearInterval(intervalId2);
+                    if (previousNode.previousNode === null) {
+                        isSolving = false;
+                        clearInterval(intervalId1);
+                        clearInterval(intervalId2);
+                    }
                 }, 30);
             }
-            clearInterval(intervalId1);
-            setTimeout(() => isSolving = false, 5000);
         }
     }, 10);
 });
