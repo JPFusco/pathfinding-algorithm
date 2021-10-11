@@ -1,4 +1,4 @@
-import { NUMBER_OF_COLS, NUMBER_OF_ROWS } from "../home/script.js";
+import { NUMBER_OF_COLS } from "../home/script.js";
 
 export const DISTANCE_BETWEEN_NODES = 1;
 

@@ -1,11 +1,76 @@
-body {
-    min-height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-header {
-    text-align: center;
+body {
+    padding: 0 50px;
 
-    margin-bottom: 75px;
+    font-family: 'PT Sans', sans-serif;
+    font-style: normal;
+
+    color: #283544;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+
+    margin: 30px 0;
+}
+
+h1, label, select {
+    font-size: 32px;
+    line-height: 41px;
+}
+
+.tools {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 40px;
+}
+
+.tools-right button {
+    margin-left: 10px;
+}
+
+.tools-left label, select, button {
+    margin-right: 10px;
+}
+
+.button {
+    all: unset;
+
+    font-size: 32px;
+    line-height: 41px;
+    padding: 5px 20px;
+
+    border: 1px solid #647492;
+    border-radius: 8px;
+
+    color: #647492;
+}
+
+.button-start {
+    background: #647492;
+    color: #FFFFFF;
+}
+
+.button-start img {
+    margin-right: 10px;
+}
+
+label {
+    color: #535353;
+}
+
+.select {
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+
+    padding: 5px 20px;
 }
 
 .container {
@@ -15,43 +80,41 @@ header {
 }
 
 .grid {
-    width: 1000px;
-    height: 355px;
-    border: 4px solid lightblue;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .node {
-    width: calc(1000px / 50);
-    height: calc(300px / 15);
-    outline: 2px solid lightblue;
-
-    display: inline-block;
+    position: relative;
+    width: calc(100% / 50);
+    height: 0;
+    padding-bottom: 2%;
+    /* outline: 0.5px solid black; */
+    background-image: url("../assets/grama\ alta.svg");
+    background-size: contain;
 }
 
 .searched-node {
-    background-color: lightblue;
-    display: inline-block;
+    background: #58a317;
 }
 
 .shortest-path-node {
-    background-color: yellow;
-    outline-color: yellow;
-    display: inline-block;
+    background-image: url("../assets/pedra.svg");
+    background-size: contain;
 }
 
 .start-node {
-    background-color: red;
-    display: inline-block;
+    background: red;
 }
 
 .end-node {
-    background-color: green;
-    outline-color: lightblue;
-    display: inline-block;
+    background: green;
 }
 
 .wall-node {
-    background-color: black;
-    outline-color: black;
-    display: inline-block;
+    background-image: url("../assets/agua.svg");
+    background-size: contain;
 }

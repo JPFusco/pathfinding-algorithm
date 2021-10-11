@@ -96,14 +96,21 @@ function setEndNode() {
     return findNodeCoords(Array.from(nodes).findIndex(node => node.classList.contains("end-node")));
 }
 
-const startButtonDijkstra = document.querySelector(".button-start-dijkstra");
-startButtonDijkstra.addEventListener("click", () => {
-    runPathFindingAlgorithm("dijkstra");
+let algorithmToRun;
+const selectAlgorithm = document.querySelector("select");
+selectAlgorithm.addEventListener("change", () => {
+    if (selectAlgorithm.value === "dijkstra") {
+        algorithmToRun = "dijkstra";
+    } else if (selectAlgorithm.value === "aStar") {
+        algorithmToRun = "a*";
+    }
 });
-
-const startButtonAStar = document.querySelector(".button-start-aStar");
-startButtonAStar.addEventListener("click", () => {
-    runPathFindingAlgorithm("a*");
+const startButton = document.querySelector(".button-start");
+startButton.addEventListener("click", () => {
+    if (!algorithmToRun || !canIDraw) {
+        return;
+    }
+    runPathFindingAlgorithm(algorithmToRun);
 });
 
 function createGrid() {
@@ -184,8 +191,9 @@ function runPathFindingAlgorithm(algorithm) {
     }, 10);
 }
 
-const resetGrid = document.querySelector(".button-reset-grid");
-resetGrid.addEventListener("click", () => {
+const clearPath = document.querySelector(".button-clear-path");
+clearPath.addEventListener("click", clearPaths);
+function clearPaths() {
     if (isSolving) {
         return;
     }
@@ -196,14 +204,21 @@ resetGrid.addEventListener("click", () => {
         }
     });
     canIDraw = true;
-})
+};
 
 const clearWalls = document.querySelector(".button-clear-walls");
-clearWalls.addEventListener("click", () => {
+clearWalls.addEventListener("click", clearWall);
+function clearWall() {
     if (isSolving) {
         return;
     }
     nodes.forEach(node => {
         node.classList.remove("wall-node");
-    })
+    });
+};
+
+const clearAll = document.querySelector(".button-clear-all");
+clearAll.addEventListener("click", () => {
+    clearPaths();
+    clearWall();
 })

@@ -5,26 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home/style.css">
     <script src="home/script.js" type="module" defer></script>
     <title>Pathfinding Visualization</title>
 </head>
 
 <body>
-    <header>
-        <button class="button-reset-grid">
-            Reset grid
-        </button>
-        <button class="button-start-dijkstra">
-            Visualize Dijkstra
-        </button>
-        <button class="button-start-aStar">
-            Visualize a*
-        </button>
-        <button class="button-clear-walls">
-            Clear walls
-        </button>
-    </header>
+    <h1>Pathfinding Visualization</h1>
+    <div class="tools">
+        <div class="tools-left">
+            <label for="algorithmSelect">Algorithm: </label>
+            <select name="algorithm" id="algorithmSelect" class="select">
+                <option>Pick one</option>
+                <option value="dijkstra">Dijkstra</option>
+                <option value="aStar">a*</option>
+            </select>
+            <button class="button button-start"><img src="../assets/run.svg" alt="Run icon"> Run</button>
+        </div>
+        <div class="tools-right">
+            <button class="button button-clear-path">
+                Clear Path
+            </button>
+            <button class="button button-clear-walls">
+                Clear Walls
+            </button>
+            <button class="button button-clear-all">
+                Clear All
+            </button>
+        </div>
+    </div>
     <div class="container">
         <div class="grid">
 
