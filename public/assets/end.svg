@@ -75,4 +75,22 @@
 <rect x="36" y="99" width="9" height="9" fill="#5CA41B"/>
 <rect x="72" y="63" width="9" height="9" fill="#5CA41B"/>
 <rect x="108" y="90" width="9" height="9" fill="#5CA41B"/>
+<rect x="31" y="9" width="9" height="126" fill="#262626"/>
+<rect x="40" y="18" width="9" height="54" fill="#FF0000"/>
+<rect x="49" y="18" width="9" height="54" fill="#FF0000"/>
+<rect x="58" y="27" width="9" height="54" fill="#FF0000"/>
+<rect x="67" y="27" width="9" height="54" fill="#FF0000"/>
+<rect x="76" y="36" width="9" height="54" fill="#FF0000"/>
+<rect x="85" y="36" width="9" height="54" fill="#FF0000"/>
+<rect x="94" y="45" width="9" height="54" fill="#FF0000"/>
+<rect x="103" y="45" width="9" height="54" fill="#FF0000"/>
+<rect x="40" y="9" width="18" height="9" fill="#262626"/>
+<rect x="40" y="72" width="18" height="9" fill="#262626"/>
+<rect x="58" y="18" width="18" height="9" fill="#262626"/>
+<rect x="58" y="81" width="18" height="9" fill="#262626"/>
+<rect x="76" y="27" width="18" height="9" fill="#262626"/>
+<rect x="76" y="90" width="18" height="9" fill="#262626"/>
+<rect x="112" y="45" width="9" height="54" fill="#262626"/>
+<rect x="94" y="36" width="18" height="9" fill="#262626"/>
+<rect x="94" y="99" width="18" height="9" fill="#262626"/>
 </svg>

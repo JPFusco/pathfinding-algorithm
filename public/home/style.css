@@ -16,13 +16,15 @@ body {
 h1 {
     text-align: center;
     font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
 
     margin: 30px 0;
 }
 
-h1, label, select {
-    font-size: 32px;
-    line-height: 41px;
+label, select {
+    font-size: 16px;
+    line-height: 32px;
 }
 
 .tools {
@@ -33,19 +35,24 @@ h1, label, select {
 }
 
 .tools-right button {
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .tools-left label, select, button {
     margin-right: 10px;
 }
 
+.tools-left {
+    display: flex;
+    align-items: center;
+}
+
 .button {
     all: unset;
 
-    font-size: 32px;
-    line-height: 41px;
-    padding: 5px 20px;
+    font-size: 16px;
+    line-height: 32px;
+    padding: 3px 20px;
 
     border: 1px solid #647492;
     border-radius: 8px;
@@ -53,9 +60,23 @@ h1, label, select {
     color: #647492;
 }
 
+.button:hover {
+    transition: 0.5s;
+    background: #647492ad;
+    color: #FFFFFF;
+}
+
 .button-start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background: #647492;
     color: #FFFFFF;
+}
+
+.button-start:hover {
+    background: #45536d;
 }
 
 .button-start img {
@@ -70,7 +91,7 @@ label {
     border: 1px solid #CBCBCB;
     border-radius: 8px;
 
-    padding: 5px 20px;
+    padding: 9px 20px;
 }
 
 .container {
@@ -93,7 +114,7 @@ label {
     height: 0;
     padding-bottom: 2%;
     /* outline: 0.5px solid black; */
-    background-image: url("../assets/grama\ alta.svg");
+    background-image: url("../assets/grama.png");
     background-size: contain;
 }
 
@@ -102,19 +123,21 @@ label {
 }
 
 .shortest-path-node {
-    background-image: url("../assets/pedra.svg");
+    background-image: url("../assets/caminho.png");
     background-size: contain;
 }
 
 .start-node {
-    background: red;
+    background-image: url("../assets/start.svg");
+    background-size: contain;
 }
 
 .end-node {
-    background: green;
+    background-image: url("../assets/end.svg");
+    background-size: contain;
 }
 
 .wall-node {
-    background-image: url("../assets/agua.svg");
+    background-image: url("../assets/agua.png");
     background-size: contain;
 }
